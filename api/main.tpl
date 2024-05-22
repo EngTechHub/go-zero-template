@@ -3,24 +3,30 @@ package main
 import (
 	"flag"
 	"fmt"
+	"os"
 
 	{{.importPackages}}
 )
 
-var configFile = flag.String("f", "etc/{{.serviceName}}.yaml", "the config file")
 
 func main() {
 	flag.Parse()
 
-	var c config.Config
-	conf.MustLoad(*configFile, &c)
+	// load local config
+	env := os.Getenv("env")
+	if env == "" {
+		// 环境变量为空则用local替代
+		env = "local"
+	}
+	configFile := fmt.Sprintf("etc/{{.serviceName}}-%s.yaml", env)
+	fmt.Printf("config file path: %s\n", configFile)
 
-	ctx := svc.NewServiceContext(c)
-	server := rest.MustNewServer(c.RestConf)
+	ctx := svc.NewServiceContext(configFile)
+	server := rest.MustNewServer(ctx.Config.RestConf)
 	defer server.Stop()
 
 	handler.RegisterHandlers(server, ctx)
 
-	fmt.Printf("Starting server at %s:%d...\n", c.Host, c.Port)
+	fmt.Printf("Starting server at %s:%d...\n", ctx.Config.Host, ctx.Config.Port)
 	server.Start()
 }

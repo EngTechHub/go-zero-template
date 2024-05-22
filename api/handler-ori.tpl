@@ -3,7 +3,7 @@ package {{.PkgName}}
 import (
 	"net/http"
 
-	"internlm_be/internal/response"
+	"{.svcName}/internal/response"
 
 	"github.com/zeromicro/go-zero/rest/httpx"
 	{{.ImportPackages}}
