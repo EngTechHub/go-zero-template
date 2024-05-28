@@ -11,7 +11,7 @@ all: build
 
 genapi:
 	$(GOCTL) api format --dir .
-	$(GOCTL) api go --api {.svcName}.api --style go_zero --dir .
+	$(GOCTL) api go --api {.svcName}.api --style go_zero --dir . --remote https://github.com/EngTechHub/go-zero-template 
 
 # 编译目标
 build: genapi
