@@ -1,7 +1,7 @@
 Nacos:
-  Endpoint: "mse-6bb2d240-p.nacos-ans.mse.aliyuncs.com"
-  Namespace: "cmg-animation"
-  DataId: "cmg_animation-local"
+  Endpoint: "{{.nacosHost}}"
+  Namespace: "{{.svcName}}"
+  DataId: "{{.svcName}}-local"
   Group: "cloud-dev"
 
 ## TODO: 替换为具体对应的服务名，按目前的命名规则
