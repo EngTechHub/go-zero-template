@@ -14,4 +14,8 @@ type Config struct {
 	rest.RestConf
 	DBSource   string
 	//{.redisConfigCode}
+
+	//{.asyncInfer}AsynInferConfig struct {
+	//{.asyncInfer}    Endpoint string
+	//{.asyncInfer}}
 }

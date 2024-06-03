@@ -9,9 +9,9 @@ import (
 	{{.configImport}}
 
 	"github.com/zeromicro/go-zero/core/conf"
-	//{.redisImport}"github.com/zeromicro/go-zero/core/logx"
 	//{.redisImport}"github.com/zeromicro/go-zero/core/stores/redis"
 
+	//{.asyncInfer}"gitlab.pjlab.org.cn/cloud/common-go/lib/asyncinfer"
 	"gitlab.pjlab.org.cn/cloud/common-go/lib/nacos"
 
 	"gorm.io/driver/mysql"
@@ -22,6 +22,7 @@ type ServiceContext struct {
 	Config {{.config}}
 	DB         *gorm.DB
 	//{.ctxRedisDef}
+	//{.asyncInfer}AsyncInferClient        asyncinfer.Client
 	{{.middleware}}
 }
 
@@ -48,6 +49,9 @@ func NewServiceContext(configFile string) *ServiceContext {
 	ctx.DB = db
 
 	//{.initRedisCode}
+
+	//{.asyncInfer}// init async infer client
+	//{.asyncInfer}ctx.AsyncInferClient = asyncinfer.NewClient(c.AsynInferConfig.Endpoint)
 
 	// init middlewares
 	ctx.Auth = middleware.NewAuthMiddleware().Handle
