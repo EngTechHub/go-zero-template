@@ -13,4 +13,5 @@ type BootstrapConfig struct {
 type Config struct {
 	rest.RestConf
 	DBSource   string
+	//{.redisConfigCode}
 }

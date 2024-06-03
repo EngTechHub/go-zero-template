@@ -3,10 +3,16 @@ package svc
 import (
 	"context"
 	"fmt"
+	"os"
+	"time"
 
 	{{.configImport}}
 
+	"github.com/redis/go-redis/v9"
 	"github.com/zeromicro/go-zero/core/conf"
+	"github.com/zeromicro/go-zero/core/logx"
+	zero_redis "github.com/zeromicro/go-zero/core/stores/redis"
+	"github.com/zeromicro/go-zero/rest"
 	"gitlab.pjlab.org.cn/cloud/common-go/lib/nacos"
 
 	"gorm.io/driver/mysql"
@@ -40,6 +46,8 @@ func NewServiceContext(configFile string) *ServiceContext {
 		panic(err)
 	}
 	ctx.DB = db
+
+	//{.initRedisCode}
 
 	// init middlewares
 	ctx.Auth = middleware.NewAuthMiddleware().Handle
