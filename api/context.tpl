@@ -22,6 +22,7 @@ import (
 type ServiceContext struct {
 	Config {{.config}}
 	DB         *gorm.DB
+	//{.ctxRedisDef}
 	{{.middleware}}
 }
 
