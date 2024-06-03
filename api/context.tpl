@@ -8,11 +8,10 @@ import (
 
 	{{.configImport}}
 
-	"github.com/redis/go-redis/v9"
 	"github.com/zeromicro/go-zero/core/conf"
 	"github.com/zeromicro/go-zero/core/logx"
-	zero_redis "github.com/zeromicro/go-zero/core/stores/redis"
-	"github.com/zeromicro/go-zero/rest"
+	"github.com/zeromicro/go-zero/core/stores/redis"
+
 	"gitlab.pjlab.org.cn/cloud/common-go/lib/nacos"
 
 	"gorm.io/driver/mysql"
