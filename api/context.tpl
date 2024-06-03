@@ -3,7 +3,6 @@ package svc
 import (
 	"context"
 	"fmt"
-	//{.redisCode}"os"
 	//{.redisCode}"time"
 
 	{{.configImport}}
