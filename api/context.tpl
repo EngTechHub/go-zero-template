@@ -3,13 +3,13 @@ package svc
 import (
 	"context"
 	"fmt"
-	//{.redisImport}"os"
-	//{.redisImport}"time"
+	//{.redisCode}"os"
+	//{.redisCode}"time"
 
 	{{.configImport}}
 
 	"github.com/zeromicro/go-zero/core/conf"
-	//{.redisImport}"github.com/zeromicro/go-zero/core/stores/redis"
+	//{.redisCode}"github.com/zeromicro/go-zero/core/stores/redis"
 
 	//{.asyncInfer}"gitlab.pjlab.org.cn/cloud/common-go/lib/asyncinfer"
 	"gitlab.pjlab.org.cn/cloud/common-go/lib/nacos"
@@ -21,7 +21,7 @@ import (
 type ServiceContext struct {
 	Config {{.config}}
 	DB         *gorm.DB
-	//{.ctxRedisDef}
+	//{.redisCode}Redis   *redis.Redis
 	//{.asyncInfer}AsyncInferClient        asyncinfer.Client
 	{{.middleware}}
 }
@@ -48,7 +48,9 @@ func NewServiceContext(configFile string) *ServiceContext {
 	}
 	ctx.DB = db
 
-	//{.initRedisCode}
+	//{.redisCode}// init redis
+	//{.redisCode}redis.SetSlowThreshold(10 * time.Second)
+	//{.redisCode}ctx.Redis = redis.MustNewRedis(c.Redis)
 
 	//{.asyncInfer}// init async infer client
 	//{.asyncInfer}ctx.AsyncInferClient = asyncinfer.NewClient(c.AsynInferConfig.Endpoint)
