@@ -3,14 +3,14 @@ package svc
 import (
 	"context"
 	"fmt"
-	"os"
-	"time"
+	//{.redisImport}"os"
+	//{.redisImport}"time"
 
 	{{.configImport}}
 
 	"github.com/zeromicro/go-zero/core/conf"
-	"github.com/zeromicro/go-zero/core/logx"
-	"github.com/zeromicro/go-zero/core/stores/redis"
+	//{.redisImport}"github.com/zeromicro/go-zero/core/logx"
+	//{.redisImport}"github.com/zeromicro/go-zero/core/stores/redis"
 
 	"gitlab.pjlab.org.cn/cloud/common-go/lib/nacos"
 
