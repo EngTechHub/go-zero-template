@@ -15,6 +15,17 @@ type Config struct {
 	DBSource   string
 	//{.redisCode}Redis    redis.RedisConf
 
+	
+	//{.ssoCode}SSO struct {
+	//{.ssoCode}	Address          string `json:"Address"`
+	//{.ssoCode}	GetJwtPath       string `json:"GetJwtPath"`
+	//{.ssoCode}	GetUserInfoPath  string `json:"GetUserInfoPath"`
+	//{.ssoCode}	GetPublicKeyPath string `json:"GetPublicKeyPath"`
+	//{.ssoCode}	LogoutPath       string `json:"LogoutPath"`
+	//{.ssoCode}	ClientID         string `json:"ClientId"`
+	//{.ssoCode}	ClientSecret     string `json:"ClientSecret"`
+	//{.ssoCode}}
+
 	//{.asyncInfer}AsynInferConfig struct {
 	//{.asyncInfer}    Endpoint string
 	//{.asyncInfer}}
